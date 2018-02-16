@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>State</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone/babel.js"></script>
+</head>
+
+<body>
+
+<div id="app"></div>
+
+<script type="text/babel">
+
+    class Counter extends React.Component{
+
+        constructor() {
+            super();
+            this.state = {
+                counter: 0,
+                sumOfClicks: 0,
+                dblClicks: 0
+            }
+        }
+
+        render() {
+            return (
+                <div>
+                    <button onClick={this.increment.bind(this)}
+                            onDoubleClick={this.countDblClicks.bind(this)}
+                    >+</button>
+                    <output>{this.state.counter}</output>
+                    <button onClick={this.decrement.bind(this)}
+                            onDoubleClick={this.countDblClicks.bind(this)}
+                    >-</button>
+                    <output>
+                        Suma kliknięć: {this.state.sumOfClicks} |
+                        Podwójne kliknięcia:{this.state.dblClicks}
+                        </output>
+                </div>
+
+            );
+        }
+
+        increment() {
+            this.setState({
+                counter: this.state.counter + 1,
+                sumOfClicks: this.state.sumOfClicks +1,
+            })
+        }
+
+        decrement() {
+            this.setState({
+                counter: this.state.counter -1,
+                sumOfClicks: this.state.sumOfClicks +1
+            })
+        }
+
+        countDblClicks() {
+            this.setState({
+                dblClicks: this.state.dblClicks +1
+            })
+        }
+
+    }
+
+    ReactDOM.render(
+            <Counter/>,
+        document.getElementById('app')
+    );
+
+</script>
+
+</body>
+</html>

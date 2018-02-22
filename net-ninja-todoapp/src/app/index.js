@@ -19,10 +19,10 @@ const TodoComponent = createReactClass({
         todos = todos.map(function (item, index) {
 
             return (
-                <TodoItem item={item} key={index} />
+                <TodoItem item={item} key={index} onDelete={this.onDelete}/>
             )
 
-        });
+        }.bind(this));
 
         return(
             <div id="todo-list">
@@ -30,7 +30,19 @@ const TodoComponent = createReactClass({
                 <ul>{todos}</ul>
             </div>
         );
-    }
+    }, // render
+
+    //custom functions
+    
+    onDelete: function (item) {
+        let updatedTodos = this.state.todos.filter(function (val, index) {
+            return item !== val; // if we return true, element will be deleted
+        });
+        this.setState({
+            todos: updatedTodos
+        })
+    },
+
 
 });
 
@@ -43,10 +55,17 @@ const TodoItem = createReactClass({
            <li>
                <div className="todo-item">
                    <span className="item-name">{this.props.item}</span>
+                   <span className="item-delete" onClick={this.handleDelete}> x </span>
                </div>
            </li>
        )
-   }
+   },
+
+    //custom functions
+    
+    handleDelete: function () {
+        this.props.onDelete(this.props.item)
+    }
 
 });
 

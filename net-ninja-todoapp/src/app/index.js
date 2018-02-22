@@ -1,6 +1,10 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const createReactClass = require('create-react-class');
+require('./css/index.css');
+
+// Module requirements
+const TodoItem = require('./todoitem');
 
 //Create component
 
@@ -45,30 +49,6 @@ const TodoComponent = createReactClass({
 
 
 });
-
-//create TodoItem component
-
-const TodoItem = createReactClass({
-
-   render: function () {
-       return (
-           <li>
-               <div className="todo-item">
-                   <span className="item-name">{this.props.item}</span>
-                   <span className="item-delete" onClick={this.handleDelete}> x </span>
-               </div>
-           </li>
-       )
-   },
-
-    //custom functions
-    
-    handleDelete: function () {
-        this.props.onDelete(this.props.item)
-    }
-
-});
-
 
 // put component into html page
 ReactDOM.render(<TodoComponent />, document.getElementById('todo-wrapper'));

@@ -10,13 +10,20 @@ const TodoComponent = createReactClass({
 
         return(
             <div>
-                <h1>Hello</h1>
-                <p>World</p>
+                <p><strong>Cheese name: </strong>{this.props.cheese.name}</p>
+                <p><strong>Smell factor: </strong>{this.props.cheese.smellFactor}</p>
+                <p><strong>Price: </strong>{this.props.cheese.price}</p>
             </div>
         );
     }
 
 });
 
+const myCheese = {
+    name: 'Camembert',
+    smellFactor: 'extreme pong',
+    price: '3.50'
+};
+
 // put component into html page
-ReactDOM.render(<TodoComponent/>, document.getElementById('todo-wrapper'));
+ReactDOM.render(<TodoComponent mssg="I like cheese" cheese={myCheese} />, document.getElementById('todo-wrapper'));

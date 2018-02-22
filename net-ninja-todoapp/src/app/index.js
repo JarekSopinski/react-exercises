@@ -19,7 +19,7 @@ const TodoComponent = createReactClass({
         todos = todos.map(function (item, index) {
 
             return (
-                <li>{item}</li>
+                <TodoItem item={item} key={index} />
             )
 
         });
@@ -27,11 +27,26 @@ const TodoComponent = createReactClass({
         return(
             <div id="todo-list">
                 <p>The busiest people have the most leisure!</p>
-                <p>{this.state.age}</p>
                 <ul>{todos}</ul>
             </div>
         );
     }
+
+});
+
+//create TodoItem component
+
+const TodoItem = createReactClass({
+
+   render: function () {
+       return (
+           <li>
+               <div className="todo-item">
+                   <span className="item-name">{this.props.item}</span>
+               </div>
+           </li>
+       )
+   }
 
 });
 

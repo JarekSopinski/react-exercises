@@ -57,6 +57,21 @@ const TodoComponent = createReactClass({
         })
     },
 
+    // lifecycle functions
+
+    componentWillMount: function () {
+        console.log('component will mount');
+    },
+
+    componentDidMount: function () {
+        console.log('component did mount');
+        // any grabbing of external data
+    },
+
+    componentWillUpdate: function () {
+        console.log('component will update');
+    },
+
 
 });
 

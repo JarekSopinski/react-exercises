@@ -5,6 +5,7 @@ require('./css/index.css');
 
 // Module requirements
 const TodoItem = require('./todoitem');
+const AddItem = require('./addItem');
 
 //Create component
 
@@ -32,6 +33,7 @@ const TodoComponent = createReactClass({
             <div id="todo-list">
                 <p>The busiest people have the most leisure!</p>
                 <ul>{todos}</ul>
+                <AddItem onAdd={this.onAdd}/>
             </div>
         );
     }, // render
@@ -42,6 +44,14 @@ const TodoComponent = createReactClass({
         let updatedTodos = this.state.todos.filter(function (val, index) {
             return item !== val; // if we return true, element will be deleted
         });
+        this.setState({
+            todos: updatedTodos
+        })
+    },
+    
+    onAdd: function (item) {
+        const updatedTodos = this.state.todos;
+        updatedTodos.push(item);
         this.setState({
             todos: updatedTodos
         })

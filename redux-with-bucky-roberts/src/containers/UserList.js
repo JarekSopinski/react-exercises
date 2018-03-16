@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 
 import {selectUser} from "../actions/index";
 
+const liStyle = {
+    cursor: 'pointer'
+};
+
 class UserList extends Component {
 
     createListItems() {
@@ -12,6 +16,7 @@ class UserList extends Component {
                 <li
                     key={user.id}
                     onClick={() => this.props.selectUser(user)}
+                    style={liStyle}
                 >{user.first} {user.last}</li>
             )
         })

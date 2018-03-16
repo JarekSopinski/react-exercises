@@ -35,8 +35,8 @@ function mapStateToProps(state) {
 
 }
 
-function matchDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
     return bindActionCreators({selectUser: selectUser}, dispatch)
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(UserList)
+export default connect(mapStateToProps, mapDispatchToProps)(UserList)
